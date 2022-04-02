@@ -2,7 +2,9 @@ import { Search, ShoppingBasket } from "@mui/icons-material"
 import React from "react"
 import { Link } from "react-router-dom"
 import "./Header.css"
+import { useStateValue } from "./StateProvider"
 const Header = () => {
+  const [{ basket }] = useStateValue()
   return (
     <nav className="header">
       {/* Amazon Log on the left */}
@@ -55,7 +57,7 @@ const Header = () => {
             <ShoppingBasket />
             {/* Number of item in the basket */}
             <span className="header__optionLineTwo  header__basketCount">
-              0
+              {basket?.length}
             </span>
           </div>
         </Link>

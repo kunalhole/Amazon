@@ -11,10 +11,6 @@ function App() {
       <div className="app">
         {/* BEM naming convections  */}
 
-        {/* Header Section */}
-
-        {/* Header Section */}
-
         {/* React Router is used for Routing */}
         <Routes>
           <Route
