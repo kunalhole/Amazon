@@ -1,10 +1,18 @@
 import { Search, ShoppingBasket } from "@mui/icons-material"
 import React from "react"
 import { Link } from "react-router-dom"
+import { auth } from "./firebase"
+import { signOut } from "firebase/auth"
 import "./Header.css"
 import { useStateValue } from "./StateProvider"
 const Header = () => {
-  const [{ basket }] = useStateValue()
+  const [{ basket, user }] = useStateValue()
+
+  const login = () => {
+    if (user) {
+      signOut(auth)
+    }
+  }
   return (
     <nav className="header">
       {/* Amazon Log on the left */}
@@ -26,16 +34,18 @@ const Header = () => {
       {/* 1st link */}
 
       <div className="header__nav">
-        <Link to="/login" className="header__link">
-          <div className="header__option">
-            <span className="header__optionLineOne">Hello</span>
-            <span className="header__optionLineTwo">Sign In</span>
+        <Link to={!user && "/login"} className="header__link">
+          <div onClick={login} className="header__option">
+            <span className="header__optionLineOne">Hello, {user?.email}</span>
+            <span className="header__optionLineTwo">
+              {user ? "Sing Out" : "Sing In"}
+            </span>
           </div>
         </Link>
 
         {/* 2nd link */}
 
-        <Link to="/login" className="header__link">
+        <Link to="/" className="header__link">
           <div className="header__option">
             <span className="header__optionLineOne">Returns</span>
             <span className="header__optionLineTwo">& Orders</span>

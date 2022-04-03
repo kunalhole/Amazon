@@ -1,22 +1,5 @@
 export const initialState = {
-  basket: [
-    {
-      id: "1",
-      title: "Iphone 13 Pro Max",
-      price: 150,
-      rating: 5,
-      image:
-        "https://imgs.search.brave.com/9Prz556sTiZdPuJCrJpi-kztwO6pu4gsLBdGbNa9rzQ/rs:fit:1200:630:1/g:ce/aHR0cHM6Ly9zdG9y/ZS5zdG9yZWltYWdl/cy5jZG4tYXBwbGUu/Y29tLzQ5ODIvYXMt/aW1hZ2VzLmFwcGxl/LmNvbS9pcy9pcGhv/bmUtMTMtcHJvLW1h/eC1ncmFwaGl0ZS1z/ZWxlY3Q_d2lkPTEy/MDAmaGVpPTYzMCZm/bXQ9anBlZyZxbHQ9/OTUmLnY9MTYzMTY1/Mjk1NjAwMA",
-    },
-    {
-      id: "1",
-      title: "Iphone 13 Pro Max",
-      price: 150,
-      rating: 5,
-      image:
-        "https://imgs.search.brave.com/9Prz556sTiZdPuJCrJpi-kztwO6pu4gsLBdGbNa9rzQ/rs:fit:1200:630:1/g:ce/aHR0cHM6Ly9zdG9y/ZS5zdG9yZWltYWdl/cy5jZG4tYXBwbGUu/Y29tLzQ5ODIvYXMt/aW1hZ2VzLmFwcGxl/LmNvbS9pcy9pcGhv/bmUtMTMtcHJvLW1h/eC1ncmFwaGl0ZS1z/ZWxlY3Q_d2lkPTEy/MDAmaGVpPTYzMCZm/bXQ9anBlZyZxbHQ9/OTUmLnY9MTYzMTY1/Mjk1NjAwMA",
-    },
-  ],
+  basket: [],
   user: null,
 }
 
@@ -25,6 +8,11 @@ export const getBasketTotal = (basket) =>
 const reducer = (state, action) => {
   console.log(action)
   switch (action.type) {
+    case "SET_USER":
+      return {
+        ...state,
+        user: action.user,
+      }
     case "ADD_TO_BASKET":
       // Logic for adding item in basket.
       return {
